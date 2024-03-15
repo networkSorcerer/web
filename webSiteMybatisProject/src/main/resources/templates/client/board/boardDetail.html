@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="htp://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{template/client/layout/layout}">
+	
+	<th:block layout:fragment="content">
+		<div class="text-center"><h3>게시판 상세</h3></div>
+		
+		<div class="container" th:object="${detail}">
+			<div>
+				<form name="dataForm" id="dataForm" method="post">
+					<input type="hidden" name="boardNumber" th:value="*{boardNumber}"/>
+				</form>
+				
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td class="col-md-3">작성자</td>
+							<td class="col-md-3 text-start"
+							th:text="*{boardName}+' (조회수: '+*{readcnt} + ')'"></td>
+							<td class="col-md-3">작성일</td>
+							<td class="col-md-3 text-start" th:text="*{boardDate}"></td>
+						</tr>
+						<tr>
+							<td class="col-md-3">글제목</td>
+							<td colspan="3" class="col-md-9 text-start" th:text="*{boardTitle}"></td>
+						</tr>
+						<tr class="board-table-tr-height">
+							<td class="col-md-3">글내용</td>
+							<td colspan="3" class="col-md-9 text-start" th:utext="*{boardContent}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="row text-center mb-2">
+				<div class="col-md-9 text-start" id="pwdFormArea">
+				<div class="col-md-10 text-end">
+					<input type="button" value="글수정" id="updateFormBtn" class="btn btn-primary btn-sm"/>
+					<input type="button" value="글삭제" id="boardDeleteBtn" class="btn btn-primary btn-sm"/>
+					<input type="button" value="글쓰기" id="insertFormBtn" class="btn btn-primary btn-sm"/>
+					<input type="button" value="글목록" id="boardListBtn" class="btn btn-primary btn-sm"/>
+				</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
