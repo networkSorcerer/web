@@ -2,10 +2,13 @@ package com.spring.client.board.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.common.vo.CommonVO;
+
 //import com.spring.common.vo.CommonVO;
 
 import lombok.Data;
 //import lombok.EqualsAndHashCode;
+import lombok.EqualsAndHashCode;
 
 /*equals와 hashCode 메소드 자동 생성시 부모 클래스의 필드까지 감안할지 안 할지 에 대해서 설정시
  * callSuper = true 로 설정하면 부모 클래스 필드 값들도 동일한지 체크하며,
@@ -14,8 +17,8 @@ import lombok.Data;
 
 
 @Data
-//@EqualsAndHashCode(callSuper=false)
-public class BoardVO /* extends CommonVO */ {
+@EqualsAndHashCode(callSuper=false)
+public class BoardVO  extends CommonVO  {
 	private int boardNumber =0;
 	private String boardName ="";
 	private String boardTitle="";

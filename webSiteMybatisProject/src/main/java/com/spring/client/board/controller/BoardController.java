@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.client.board.service.BoardService;
 import com.spring.client.board.vo.BoardVO;
-
+import com.spring.common.vo.PageDTO;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -48,8 +48,8 @@ public class BoardController {
 		List<BoardVO> boardList = boardService.boardList(boardVO);
 		model.addAttribute("boardList", boardList);
 		
-//		int total = boardService.boardListCnt(bvo);
-//		model.addAttribute("pageMaker", new PageDTO(bvo, total));
+		int total = boardService.boardListCnt(boardVO);
+		model.addAttribute("pageMaker", new PageDTO(boardVO, total));
 		
 		return "client/board/boardList";
 	}

@@ -15,11 +15,11 @@
 		<result column="b_file" property="boardFile"/>
 	</resultMap>
 	<!-- 게시판 리스트 기본 조회 -->
-	<select id="boardList" parameterType="board" resultMap="boardMap">
+	<!-- <select id="boardList" parameterType="board" resultMap="boardMap">
 		SELECT b_num, b_name, b_title, to_char(b_date,'YYYY-MM-DD') as b_date
 		FROM spring_board
 		ORDER BY b_num desc
-	</select>
+	</select> -->
 	
 	<!-- <insert id="boardInsert" parameterType="board">
 		<selectKey keyProperty="boardNumber" resultType="int" order="BEFORE">
@@ -129,6 +129,9 @@
 		<if test="search=='b_name'">
 			<![CDATA[b_name LIKE '%' || #{keyword} || '%']]>
 		</if>
+		<if test="search=='b_date'">
+    		<![CDATA[ to_char(b_date, 'YYYY-MM-DD') between #{startDate} and #{endDate}]]>
+		</if>	
 	</sql>
 	
 	<!-- 게시판 리스트 검색 포함 조회 -->
@@ -146,7 +149,7 @@
 	<!-- 게시판 리스트 조회(페이징 처리와 검색처리  및 댓글 갯수 구하기-->
 	<!-- 힌트(hint): 개발자가 데이터 베이스에 어떤 방식으로 실행해주야 하는지를 명시하기때문에 강제성부여 -->
 	<!-- rownum:SQL이 실행된 결과에 넘버링 해준다 -->
-	<!-- <select id="boardList" parameterType="board" resultMap="boardMap">
+	<select id="boardList" parameterType="board" resultMap="boardMap">
 	  <![CDATA[
 	    SELECT
 	      b_num, b_name, b_title, TO_CHAR(b_date, 'YYYY-MM-DD') AS b_date, readcnt, b_file,
@@ -163,7 +166,7 @@
 	      	) boardList
 	    		WHERE rnum > (#{pageNum} - 1) * #{amount}
 	  		]]>
-	</select> -->
+	</select>
 
 	
 	<!-- 전체 레코드 수 조회 -->

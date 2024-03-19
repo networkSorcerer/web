@@ -33,6 +33,8 @@
 			</div>
 			<div class="row text-center mb-2">
 				<div class="col-md-9 text-start" id="pwdFormArea">
+				
+				</div>
 				<div class="col-md-10 text-end">
 					<input type="button" value="글수정" id="updateFormBtn" class="btn btn-primary btn-sm"/>
 					<input type="button" value="글삭제" id="boardDeleteBtn" class="btn btn-primary btn-sm"/>
@@ -41,5 +43,9 @@
 				</div>
 				</div>
 			</div>
-		</div>
+		
 	</th:block>
+	<th:block layout:fragment="script">
+	<script src="/js/board/boardDetail.js"></script>
+	</th:block>
+</html>

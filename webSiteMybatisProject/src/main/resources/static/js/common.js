@@ -7,7 +7,7 @@ function chkData(item, msg) {
 	} else {
 		return true;
 	}
-}
+};
 
 function dataCheck(item, out, msg){
 	if($(item).val().replace(/\s/g,"")==""){
@@ -17,7 +17,7 @@ function dataCheck(item, out, msg){
 	}else {
 		return true;
 	}
-}
+};
 
 function checkForm(item, msg) {
 	let message = "";
@@ -28,7 +28,7 @@ function checkForm(item, msg) {
 	}else {
 		return true;
 	}
-}
+};
 
 function chkFile(item) {
 	let ext = item.val().split('.').pop().toLowerCase();
@@ -38,7 +38,20 @@ function chkFile(item) {
 	}else {
 		return true;
 	}
-}
+};
+
+function getDateFormat(dateValue){
+	var year = dateValue.getFullYear();
+	
+	var month = dateValue.getMonth()+1;
+	month = (month<10) ? "0"+month : month;
+	
+	var day = dateValue.getDate();
+	day = (day<10) ? "0"+day : day;
+	
+	var result = year+"-"+month+"-"+day;
+	return result;
+};
 
 const actionProcess= function(form, method, action) {
 	$(form).attr({
@@ -46,8 +59,8 @@ const actionProcess= function(form, method, action) {
 		"action":action
 	});
 	$(form).submit();
-}
+};
 
 const locationProcess = function(url) {
 	location.href = url;
-}
+};
