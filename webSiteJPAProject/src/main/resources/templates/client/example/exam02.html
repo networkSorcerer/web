@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<div class="container"> 
+			<div class ="page-header"><h3 class="text-center">페이지 이동</h3></div>
+			
+			<div th:if="${#strings.isEmpty(param1) || #strings.isEmpty(param2)}">
+				<p>파라미터가 존재하지 않습니다</p>
+			</div>
+			
+			<div th:if="${not #strings.isEmpty(param1)&& not #strings.isEmpty(param2)}">
+				<p th:text="${param1}"></p>
+				<p th:text="${param2}"></p>
+			</div>
+		</div>
+	</body>
+</html>
